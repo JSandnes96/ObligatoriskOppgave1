@@ -128,11 +128,24 @@ public class Oblig1 {
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
 
-        char siste = a[a.length-1];
-        for(int i = a.length-1; i > 0; i--){
-            a[i] = a[i-1];
+        //KOPIERT FRA 1.3.13 OPPG 4
+
+        int n = a.length;
+        if (n < 2) return;                 // tomt eller en verdi, ingen rotasjon
+        if ((k %= n) < 0) k += n;
+
+        if (k <= (n+1)/2)  // forskyver k enheter mot høyre
+        {
+            char[] b = Arrays.copyOfRange(a, n - k, n);         // opretter hjelpetabell
+            for (int i = n - 1; i >= k; i--) a[i] = a[i - k];   // forskyver k enheter
+            System.arraycopy(b, 0, a, 0, k);                    // kopierer
         }
-        a[0] = siste;
+        else  // forskyver mot venstre n - k enheter mot venstre
+        {
+            char[] b = Arrays.copyOfRange(a, 0, n - k);         // oppretter hjelpetabell
+            for (int i = 0; i < k; i++) a[i] = a[i + n - k];    // forskyver
+            System.arraycopy(b, 0, a, k, n - k);                // kopierer
+        }
 
 
     }
@@ -140,24 +153,26 @@ public class Oblig1 {
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-        //KOPIERT RETT FRA OPPG 1b i 1.3.11
 
-        int k = Math.min(a.length(), b.length());  // lengden på den korteste
-        StringBuilder s = new StringBuilder();
+        String ny = "";
 
-        for (int i = 0; i < k; i++)
-        {
-            s.append(a.charAt(i)).append(b.charAt(i));
+        for(int i = 0; i< s.length(); i++){
+            ny= ny + s.charAt(i);
+            if(i<t.length()){
+                ny = ny + t.charAt(i);
+            }
         }
 
-        s.append(a.substring(k)).append(b.substring(k));
+        if(s.length()<t.length()){
+            ny = ny + t.substring(s.length());
+        }
 
-        return s.toString();
+        return ny;
     }
 
     /// 7b)
     public static String flett(String... s) {
-        throw new NotImplementedException();
+
     }
 
     ///// Oppgave 8 //////////////////////////////////////
@@ -251,11 +266,11 @@ public class Oblig1 {
 
     ///// Oppgave 10 //////////////////////////////////////
     public static int bokstavNr(char bokstav) {
-        throw new NotImplementedException();
+
     }
 
     public static boolean inneholdt(String a, String b) {
-        throw new NotImplementedException();
+
     }
 
 }  // Oblig1
