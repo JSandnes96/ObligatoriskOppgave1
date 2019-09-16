@@ -100,39 +100,25 @@ public class Oblig1 {
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        System.out.println("\nUrotert er: " + Arrays.toString(a));
 
-        //DENNE SKRIVER UT SAMME ARRAY PÅ NYTT
-        /*for(int i = 0; i < a.length; i++){
-            char siste = a[a.length-1];
-            int j;
-            for (j = a.length-1; j> 0; j--){
-                a[j]=a[j-1];
-            }
-            a[0] = siste;
-        }*/
-
-        //DENNE SKRIVER UT RIKTIG MEN HAR LAGD NYTT ARRAY :(
-
-        char[] b = new char[a.length];
-
-        for(int i = 0; i <= a.length-1; i++){
-            b[(i+1) % a.length ] = a[i];
+        char siste = a[a.length-1];
+        for(int i = a.length-1; i > 0; i--){
+            a[i] = a[i-1];
         }
+        a[0] = siste;
 
-        System.out.println("\nRotert er: " + Arrays.toString(b));
     }
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
 
-        char[] b = new char[a.length];
-
-        for(int i = 0; i <= a.length-1; i++){
-            b[(i+k) % a.length ] = a[i];
+        char siste = a[a.length-1];
+        for(int i = a.length-1; i > 0; i--){
+            a[i] = a[i-1];
         }
+        a[0] = siste;
 
-        System.out.println("\nRotert er: " + Arrays.toString(b));
+
     }
 
     ///// Oppgave 7 //////////////////////////////////////
