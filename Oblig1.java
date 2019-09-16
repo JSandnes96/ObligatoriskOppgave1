@@ -86,38 +86,28 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-
-        /*for (int i = 0; i < a.length-1; i++){
-            for(int j = i+1; j < a.length; j++){
-                if(i % 2 == 0 && j % 2 != 0){
-                    int midlertidig = a[i];
-                    a[i] = a[j];
-                    a[j] = midlertidig;
-                }
-            }
-        }*/
-
-        int venstre = 0; //int venstre har verdi lik indexen til første verdi i arrayet
-        int høyre = a.length-1; //høyre har verdi lik indexen til siste verdi i arrayet
-
-        while(venstre > høyre){
-            while (a[venstre]%2 == 0 && venstre > høyre){
+        /* Initialize left and right indexes */
+        int venstre = 0;
+        int hoyre = a.length - 1;
+        while (venstre < hoyre)
+        {
+            /* Increment left index while we see 0 at left */
+            while (a[venstre]%2 == 1 && venstre < hoyre)
                 venstre++;
+
+            /* Decrement right index while we see 1 at right */
+            while (a[hoyre]%2 == 0 && venstre < hoyre)
+                hoyre--;
+
+            if (venstre < hoyre)
+            {
+                /* Swap arr[left] and arr[right]*/
+                int midlertidig = a[venstre];
+                a[venstre] = a[hoyre];
+                a[hoyre] = midlertidig;
+                venstre++;
+                hoyre--;
             }
-
-        }
-
-        while(a[høyre]%2 == 1 && venstre > høyre){
-            høyre--;
-        }
-
-        if (venstre > høyre){
-            int midlertidig = a[venstre];
-            a[venstre]= a[høyre];
-            a[høyre] = midlertidig;
-            venstre++;
-            høyre--;
-
         }
 
     }
@@ -125,11 +115,13 @@ public class Oblig1 {
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
 
-        char siste = a[a.length-1];
-        for(int i = a.length-1; i > 0; i--){
-            a[i] = a[i-1];
+        if (a.length > 0) {
+            char siste = a[a.length - 1];
+            for(int i = a.length-1; i > 0; i--){
+                a[i] = a[i-1];
+            }
+            a[0] = siste;
         }
-        a[0] = siste;
 
     }
 
