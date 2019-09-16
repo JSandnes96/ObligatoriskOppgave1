@@ -178,18 +178,20 @@ public class Oblig1 {
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
         int[] indeks = new int[a.length];
-        int indeks-tall = a[0];
-        int minste = a[0];
+        int minsteTall = a[0];
 
-        for(int i = 0; i<a.length-1; i++){
-            for(int j = 0; j<a.length; j++){
-                if (a[i]<minste){
-                    indeks-tall = i;
+        for(int i = 0; i < a.length-1; i++){
+            for(int j = i+1; i < a.length; j++){
+                if(a[j] <= minsteTall){
+                    minsteTall = a[j];
                 }
             }
-            indeks[i] = indeks-tall;
+            indeks[i] = minsteTall;
         }
+
+        return indeks;
     }
+
 
 
     ///// Oppgave 9 //////////////////////////////////////
