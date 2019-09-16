@@ -87,7 +87,7 @@ public class Oblig1 {
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
 
-        for (int i = 0; i < a.length-1; i++){
+        /*for (int i = 0; i < a.length-1; i++){
             for(int j = i+1; j < a.length; j++){
                 if(i % 2 == 0 && j % 2 != 0){
                     int midlertidig = a[i];
@@ -95,7 +95,31 @@ public class Oblig1 {
                     a[j] = midlertidig;
                 }
             }
+        }*/
+
+        int venstre = 0; //int venstre har verdi lik indexen til første verdi i arrayet
+        int høyre = a.length-1; //høyre har verdi lik indexen til siste verdi i arrayet
+
+        while(venstre > høyre){
+            while (a[venstre]%2 == 0 && venstre > høyre){
+                venstre++;
+            }
+
         }
+
+        while(a[høyre]%2 == 1 && venstre > høyre){
+            høyre--;
+        }
+
+        if (venstre > høyre){
+            int midlertidig = a[venstre];
+            a[venstre]= a[høyre];
+            a[høyre] = midlertidig;
+            venstre++;
+            høyre--;
+
+        }
+
     }
 
     ///// Oppgave 5 //////////////////////////////////////
