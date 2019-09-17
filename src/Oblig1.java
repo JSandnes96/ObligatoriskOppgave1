@@ -84,28 +84,21 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        /* Initialize left and right indexes */
-        int venstre = 0;
-        int hoyre = a.length - 1;
-        while (venstre < hoyre)
-        {
-            /* Increment left index while we see 0 at left */
-            while (a[venstre]%2 == 1 && venstre < hoyre)
-                venstre++;
+        int teller = 0;
 
-            /* Decrement right index while we see 1 at right */
-            while (a[hoyre]%2 == 0 && venstre < hoyre)
-                hoyre--;
-
-            if (venstre < hoyre)
-            {
-                /* Swap arr[left] and arr[right]*/
-                int midlertidig = a[venstre];
-                a[venstre] = a[hoyre];
-                a[hoyre] = midlertidig;
-                venstre++;
-                hoyre--;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 2 != 0) {
+                int temp = a[teller];
+                a[teller] = a[i];
+                a[i] = temp;
+                teller++;
             }
+        }
+        if (teller == a.length || teller == 0) {
+            Arrays.sort(a);
+        } else {
+            Arrays.sort(a, 0, teller);
+            Arrays.sort(a, teller, a.length);
         }
 
     }
@@ -170,7 +163,30 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
+        if (s.length < 0) {
+            return "";
+        }
 
+        int lengste = 0;
+        for (String s1 : s) {
+            if (lengste < s1.length()) {
+                lengste = s1.length();
+            }
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < lengste; i++) {
+
+            for (int j = 0; j < s.length; j++) {
+                if (i < s[j].length()) {
+                    result.append(s[j].charAt(i));
+                }
+            }
+
+
+        }
+        return result.toString();
     }
 
     ///// Oppgave 8 //////////////////////////////////////
@@ -282,11 +298,11 @@ public class Oblig1 {
 
     ///// Oppgave 10 //////////////////////////////////////
     public static int bokstavNr(char bokstav) {
-
+        return 1;
     }
 
     public static boolean inneholdt(String a, String b) {
-
+        return true;
     }
 
 }  // Oblig1
