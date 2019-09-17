@@ -122,8 +122,8 @@ public class Oblig1 {
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
 
-        int n = a.length;
-        if (n < 2) return;                 // tomt eller en verdi, ingen rotasjon
+        int n = a.length;                  //int lik lengden til arrayet
+        if (n < 2) return;                 // hvis arrayet er tomt eller en verdi, ingen rotasjon
         if ((k %= n) < 0) k += n;
 
         if (k <= (n + 1) / 2)  // forskyver k enheter mot høyre
@@ -290,17 +290,52 @@ public class Oblig1 {
     }
 
     ///// Oppgave 10 //////////////////////////////////////
-    public static int bokstavNr(char bokstav) {
-        throw new NotImplementedException();
-    }
 
     public static boolean inneholdt(String a, String b) {
-        for (int i = 0; i < a.length(); i++) {
+
+
+        char[] hjelp = new char[b.length()];
+
+        for(int i = 0; i < a.length(); i++) {
             char c = a.charAt(i);
             if (b.indexOf(c) == -1) {
                 return false;
             }
+            else{
+                hjelp[i] = c;
+                b = b.replaceFirst(a.charAt(i) + "", "");
+            }
         }
         return true;
+
+        /*boolean Ok = true;
+
+        for (int i = 0;i < a.length();i++) {
+            if (!b.contains(a.charAt(i) + "")) {
+                Ok = false;
+                break;
+            }
+            b = b.replaceFirst(a.charAt(i) + "", "");
+        }
+        return Ok;*/
+
+        /*int lengdeA = a.length();
+        int lengdeB = b.length();
+        if (lengdeA == 0) {
+            return lengdeB == 0;
+        }
+
+        if(lengdeB == 0){
+            return lengdeA == 0;
+        }
+
+        for(int i = 0; i<lengdeA; i++){
+            String temp = a.substring(i,i + 1);
+            if(b.contains(temp))
+                b = b.replaceFirst(temp, "");
+            else
+                return false;
+        }
+        return true;*/
     }
 }
