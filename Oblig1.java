@@ -178,15 +178,31 @@ public class Oblig1 {
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
         int[] indeks = new int[a.length];
-        int minsteTall = a[0];
+        int[] sortert = a.clone();
 
-        for(int i = 0; i < a.length-1; i++){
-            for(int j = i+1; i < a.length; j++){
-                if(a[j] <= minsteTall){
-                    minsteTall = a[j];
+        for(int i = 0 ; i < sortert.length;i++)
+        {
+            for(int j = i+1 ; j< sortert.length;j++)
+            {
+                if(sortert[i] > sortert[j])
+                {
+                    int temp = sortert[i];
+                    sortert[i] = sortert[j];
+                    sortert[j] = temp;
                 }
             }
-            indeks[i] = minsteTall;
+        }
+
+        int indeksen = 0;
+
+        for(int i = 0 ; i < a.length;i++)
+        {
+            for(int j = 0; j<a.length; j++) {
+                if (sortert[i] == a[j]) {
+                    indeksen = j;
+                }
+            }
+            indeks[i] = indeksen;
         }
 
         return indeks;
