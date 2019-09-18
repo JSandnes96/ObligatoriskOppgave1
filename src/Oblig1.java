@@ -162,7 +162,7 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
-        if (s.length < 0) {
+        if (s.length == 0) {
             return "";
         }
 
