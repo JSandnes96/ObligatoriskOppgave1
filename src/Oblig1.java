@@ -144,58 +144,58 @@ public class Oblig1 {
     /// 7a)
     public static String flett(String s, String t) {
 
-        String ny = "";
+        String ny = ""; //Oppretter en tom string
 
-        for (int i = 0; i < s.length(); i++) {
-            ny = ny + s.charAt(i);
-            if (i < t.length()) {
-                ny = ny + t.charAt(i);
+        for (int i = 0; i < s.length(); i++) { //for lokke
+            ny = ny + s.charAt(i); //Legger til bokstaven pa plassen i i ny-stringen
+            if (i < t.length()) { //sjekker at det er bokstav i t stringen pa i-plassen
+                ny = ny + t.charAt(i); //hvis det er det, legges denne bokstaven til i ny-stringen
             }
         }
 
-        if (s.length() < t.length()) {
-            ny = ny + t.substring(s.length());
+        if (s.length() < t.length()) { //Sjekker om t er lenger enn s
+            ny = ny + t.substring(s.length()); //Hvis den er det legger den til resten av t etter s og t er flettet sammen i for lokka
         }
 
-        return ny;
+        return ny; //returnerer stringen ny
     }
 
     /// 7b)
     public static String flett(String... s) {
-        if (s.length == 0) {
+        if (s.length == 0) {  //sjekker om tabellen har lengde 0, i safall returneres bare en tom string
             return "";
         }
 
-        int lengste = 0;
+        int lengste = 0; //lager en ny int lengste, den skal brukes til å finne det lengste elementet i tabellen
         for (String s1 : s) {
             if (lengste < s1.length()) {
                 lengste = s1.length();
             }
         }
 
-        StringBuilder result = new StringBuilder();
+        StringBuilder resultat = new StringBuilder();
 
-        for (int i = 0; i < lengste; i++) {
+        for (int i = 0; i < lengste; i++) { //for lokke
 
-            for (int j = 0; j < s.length; j++) {
-                if (i < s[j].length()) {
-                    result.append(s[j].charAt(i));
+            for (int j = 0; j < s.length; j++) { //ny forlokke
+                if (i < s[j].length()) { //sjekker om i er mindre enn j elementet i s
+                    resultat.append(s[j].charAt(i)); //hvis den er det legger den til dette elementet
                 }
             }
 
 
         }
-        return result.toString();
+        return resultat.toString(); //skriver ut resultat
     }
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
-        int[] indeks = new int[a.length];
-        int[] sortert = a.clone();
+        int[] indeks = new int[a.length]; //Nytt array like langt som a
+        int[] sortert = a.clone(); //nytt array som er a klonet
 
-        for (int i = 0; i < sortert.length; i++) {
-            for (int j = i + 1; j < sortert.length; j++) {
-                if (sortert[i] > sortert[j]) {
+        for (int i = 0; i < sortert.length; i++) { //for lokke
+            for (int j = i + 1; j < sortert.length; j++) { //for lokke
+                if (sortert[i] > sortert[j]) { //hvis [i] elementet er storre enn [j] elementet bytter de plass
                     int temp = sortert[i];
                     sortert[i] = sortert[j];
                     sortert[j] = temp;
@@ -203,18 +203,18 @@ public class Oblig1 {
             }
         }
 
-        int indeksen = 0;
+        int indeksen = 0; //ny hjelpevariabel
 
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a.length; j++) {
-                if (sortert[i] == a[j]) {
-                    indeksen = j;
+                if (sortert[i] == a[j]) { //finner ut hvilken j-verdi i a, som tilsvarer i-verdien i det sorterte arrayet
+                    indeksen = j; //der de er like setter man int indeks til j (altsa den indeksen som a[j] har når den er lik sortert[i]
                 }
             }
-            indeks[i] = indeksen;
+            indeks[i] = indeksen; //legger inn indeksen i indeks arrayet
         }
 
-        return indeks;
+        return indeks; //returnerer indeks arrayet
     }
 
 
@@ -295,16 +295,16 @@ public class Oblig1 {
 
 
         //FUNKER MEN GÅR FOR SAKTE
-        char[] hjelp = new char[b.length()];
+        char[] hjelp = new char[b.length()]; //Nytt hjelpearray
 
         for(int i = 0; i < a.length(); i++) {
-            char c = a.charAt(i);
-            if (b.indexOf(c) == -1) {
-                return false;
+            char c = a.charAt(i); //ny hjelpevariabel, c = verdien på i'te posisjon i a stringen
+            if (b.indexOf(c) == -1) { //ser om man finner denne verdien i b
+                return false; //hvis ikke man gjor det returneres false
             }
             else{
-                hjelp[i] = c;
-                b = b.replaceFirst(a.charAt(i) + "", "");
+                hjelp[i] = c; //setter c inn i i'te posisjon i hjelpearrayet
+                b = b.replaceFirst(a.charAt(i) + "", ""); //endrer b til "", fjerner altså verdien fra stringen sa den ikke kan registreres igjen
             }
         }
         return true;
