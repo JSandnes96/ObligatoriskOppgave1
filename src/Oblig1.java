@@ -5,8 +5,7 @@
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.util.Arrays;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 
 public class Oblig1 {
@@ -294,6 +293,8 @@ public class Oblig1 {
     public static boolean inneholdt(String a, String b) {
 
 
+
+        //FUNKER MEN GÅR FOR SAKTE
         char[] hjelp = new char[b.length()];
 
         for(int i = 0; i < a.length(); i++) {
@@ -308,34 +309,30 @@ public class Oblig1 {
         }
         return true;
 
-        /*boolean Ok = true;
+        /*char[] aArray = a.toCharArray();
+        char[] bArray = b.toCharArray();
 
-        for (int i = 0;i < a.length();i++) {
-            if (!b.contains(a.charAt(i) + "")) {
-                Ok = false;
-                break;
+        Arrays.sort(aArray);
+        Arrays.sort(bArray);
+
+        for(int i = 0; i<aArray.length; i++){
+            for(int j = 0; j<bArray.length; j++){
+                if(aArray[i] == bArray[j]){
+                    char midlertidig = bArray[i];
+                    bArray[i] = bArray[j];
+                    bArray[j] = midlertidig;
+                    break;
+                }
+                else{
+                    return false;
+                }
             }
-            b = b.replaceFirst(a.charAt(i) + "", "");
-        }
-        return Ok;*/
-
-        /*int lengdeA = a.length();
-        int lengdeB = b.length();
-        if (lengdeA == 0) {
-            return lengdeB == 0;
-        }
-
-        if(lengdeB == 0){
-            return lengdeA == 0;
-        }
-
-        for(int i = 0; i<lengdeA; i++){
-            String temp = a.substring(i,i + 1);
-            if(b.contains(temp))
-                b = b.replaceFirst(temp, "");
-            else
-                return false;
         }
         return true;*/
+
+
+
+
+
     }
 }
