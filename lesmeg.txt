@@ -1,0 +1,4 @@
+Navn i gruppen: Jørgen Sandnes
+Studentnr i gruppen: s331423
+
+Java-filen ligger i src-mappa
